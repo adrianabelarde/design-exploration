@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23c81e12'/><rect x='18' y='16' width='64' height='46' rx='6' fill='%23c3c6c9'/><circle cx='24' cy='80' r='9' fill='%23f2f0ec'/><circle cx='76' cy='80' r='9' fill='%23f2f0ec'/></svg>"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A collection of tactile, motion-rich browser interface explorations."
+    />
+    <title>Design Explorations</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      if (import.meta.env.DEV) {
+        import('react-grab');
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,475 @@
+/* ---- carousel but view-master ---------------------------------------------- */
+
+.vm-stage {
+  align-content: center;
+  background: #ececee;
+}
+
+.vm-wrap {
+  width: min(1080px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vm-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.vm-kicker {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #86868b;
+}
+
+.vm-head h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+}
+
+.vm-sub {
+  margin: 0;
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+/* ---- the viewer ------------------------------------------------------------- */
+
+.vm-viewer {
+  position: relative;
+  width: min(560px, 100%);
+  margin-top: 96px; /* room for the disc poking out of the slot */
+}
+
+/* The reel docks into a slot in the top of the viewer: most of the disc is
+   inside the body, a crescent pokes out — exactly like a Model G. */
+.vm-dock {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 330px;
+  height: 330px;
+  margin-left: -165px;
+  transform: translateY(-42%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vm-dock-anim {
+  width: 100%;
+  height: 100%;
+}
+
+/* Eject: pops up out of the slot, then falls under the same constant
+   gravity as every other piece of paper in these demos (y ∝ t²). */
+.vm-dock-anim.is-ejecting {
+  animation: vm-eject 0.64s forwards;
+}
+
+@keyframes vm-eject {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  32% {
+    transform: translateY(-150px) rotate(4deg);
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0.33);
+  }
+  100% {
+    transform: translateY(120vh) rotate(38deg);
+  }
+}
+
+/* Insert: a hand feeding the next reel down into the slot — drawer curve,
+   the same entry big sliding surfaces get everywhere on this site. */
+.vm-dock-anim.is-inserting {
+  animation: vm-insert 0.55s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes vm-insert {
+  from {
+    transform: translateY(calc(-50vh - 100%));
+  }
+}
+
+/* The reel: putty-gray Fisher-Price stock, black print, white logotype —
+   colors sampled off the real "Custom Sales" demo reel. */
+.vm-disc {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vm-disc-rot {
+  transition: transform 0.24s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.vm-disc-card {
+  /* fill comes from the per-instance radial gradient in ReelDisc */
+  stroke: none;
+}
+
+/* Through-cuts read white: the backing sheet shows through the punch. */
+.vm-disc-slot {
+  fill: #fbfbfa;
+  stroke: rgba(0, 0, 0, 0.16);
+  stroke-width: 0.2;
+}
+
+.vm-disc-notch {
+  fill: #fbfbfa;
+  stroke: none;
+}
+
+.vm-disc-chip {
+  stroke: rgba(15, 15, 18, 0.5);
+  stroke-width: 0.25;
+}
+
+/* Kodachrome density: real chips read dark until backlit. */
+.vm-disc-chip-density {
+  fill: #0b0b0e;
+  opacity: 0.32;
+}
+
+.vm-disc-no {
+  font-size: 4.4px;
+  font-weight: 500;
+  fill: #2a2a2e;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.vm-disc-ink {
+  fill: #222226;
+}
+
+.vm-disc-up {
+  font-size: 2px;
+  font-weight: 600;
+  letter-spacing: 0.55px;
+  fill: #222226;
+}
+
+.vm-disc-logo {
+  font-size: 3.6px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.08px;
+  fill: #ffffff;
+  stroke: #26262a;
+  stroke-width: 0.5;
+  paint-order: stroke;
+  text-anchor: middle;
+}
+
+.vm-disc-fine text {
+  font-size: 1.15px;
+  font-weight: 500;
+  letter-spacing: 0.08px;
+  fill: #2b2b2e;
+  text-anchor: middle;
+}
+
+.vm-disc-hub {
+  fill: #fbfbfa;
+  stroke: rgba(0, 0, 0, 0.2);
+  stroke-width: 0.3;
+}
+
+.vm-disc-name {
+  font-size: 4px;
+  font-weight: 650;
+  letter-spacing: -0.06px;
+  fill: #1e1e22;
+  text-anchor: middle;
+}
+
+.vm-disc-name-sub {
+  font-size: 2.4px;
+  font-weight: 500;
+  fill: #2b2b2e;
+  text-anchor: middle;
+}
+
+/* The advance lever, red bakelite, half-proud of the right edge. */
+.vm-lever {
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  width: 34px;
+  height: 96px;
+  margin-top: -48px;
+  border-radius: 12px;
+  background: #c03b2d;
+  z-index: 0;
+  pointer-events: none;
+  transition: transform 0.16s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.vm-lever.is-down {
+  transform: translateY(16px);
+  transition: transform 0.05s ease-out;
+}
+
+/* The viewer body. */
+.vm-body {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 24px 48px -24px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.vm-body:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 4px;
+}
+
+/* ---- through the lens ------------------------------------------------------- */
+
+.vm-lens {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 1.15; /* the real chip: 11.5 × 10 mm */
+  background: #fafafa;
+}
+
+/* The whole view rides with the disc: up and out on eject, fed back down
+   on insert. An empty viewer shows blank white. */
+.vm-feed {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.55s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.vm-feed.is-out {
+  transform: translateY(-130%);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Fresh reel fed in: the view arrives with the disc, same drawer curve.
+   An animation (not a transition) because the lens remounts per album. */
+.vm-feed.is-entering {
+  animation: vm-feed-in 0.55s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes vm-feed-in {
+  from {
+    transform: translateY(-130%);
+  }
+}
+
+/* Slides live on a ring around the scaled disc center, 315% of the lens
+   height above it (r = 31.75 mm over a 10 mm chip). One pull = 51.429°,
+   fast and mechanical — a ratchet, not a spring. */
+.vm-ring,
+.vm-photo {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% -315%;
+}
+
+.vm-ring {
+  transition: transform 0.24s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.vm-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px 20px;
+}
+
+.vm-slide-no {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  font-variant-numeric: tabular-nums;
+}
+
+.vm-slide-caption {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.18);
+}
+
+.vm-hint {
+  margin: 18px 0 0;
+  font-size: 12px;
+  color: #a1a1a6;
+  text-align: center;
+}
+
+/* ---- the card wall ----------------------------------------------------------
+   Selection is a row of gift cards: matte white stock with a die-cut euro
+   slot, one line of copy, and the reel under its blister as the mark. */
+
+.vm-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.vm-hanger {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  animation: vm-card-in 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@keyframes vm-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.vm-hanger:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 6px;
+  border-radius: 18px;
+}
+
+/* The card: matte white, shadow lives here. The white face is a separate
+   masked layer so the keyhole slot is a REAL hole — outset shadows don't
+   paint under the border box, so the wall shows through clean. */
+.vm-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 360px;
+  height: 492px;
+  padding: 100px 32px 0;
+  border-radius: 16px;
+  background: transparent;
+}
+
+/* Die-cut hang hole to the ISO 15348 euro-slot spec: 32 × 6.5 mm slot,
+   Ø10 mm sombrero bump, ~5 mm below the top edge — at this card's scale
+   (232 px ≈ 89 mm sleeve, 2.6 px/mm). A real hole, cut via mask. */
+/* Both layers carry the same die cut, so the board's thickness shows
+   wherever the punch went through. */
+.vm-card-face,
+.vm-card-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mask-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='360'%20height='492'%3E%3Cpath%20fill='white'%20fill-rule='evenodd'%20d='M0%200H360V492H0Z%20M140.1%2027.6H164.4A15.6%2015.6%200%201%201%20195.6%2027.6H219.9A10.14%2010.14%200%200%201%20230.04%2037.74A10.14%2010.14%200%200%201%20219.9%2047.88H140.1A10.14%2010.14%200%200%201%20129.96%2037.74A10.14%2010.14%200%200%201%20140.1%2027.6Z'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='360'%20height='492'%3E%3Cpath%20fill='white'%20fill-rule='evenodd'%20d='M0%200H360V492H0Z%20M140.1%2027.6H164.4A15.6%2015.6%200%201%201%20195.6%2027.6H219.9A10.14%2010.14%200%200%201%20230.04%2037.74A10.14%2010.14%200%200%201%20219.9%2047.88H140.1A10.14%2010.14%200%200%201%20129.96%2037.74A10.14%2010.14%200%200%201%20140.1%2027.6Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+}
+
+/* The raw board core: the same sheet, shifted down. It peeks out 2px along
+   the bottom edge and inside the top lip of the euro slot — the two places
+   a real die-cut card shows its thickness under overhead light. */
+.vm-card-edge {
+  transform: translateY(2px);
+  background: linear-gradient(180deg, #dcdce1 0%, #d3d3d9 100%);
+}
+
+.vm-card-face {
+  background: #ffffff;
+}
+
+.vm-card-qty {
+  position: absolute;
+  top: 19px;
+  right: 22px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a1a1a6;
+}
+
+.vm-card-tag {
+  position: relative;
+  max-width: 220px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: #1d1d1f;
+  text-wrap: balance;
+}
+
+/* The reel, sitting on the card as the mark. */
+.vm-card-mark {
+  position: relative;
+  width: 304px;
+  margin: 26px auto 0;
+}
+
+/* ---- back to the wall ------------------------------------------------------- */
+
+.vm-back {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
+  font-size: 13px;
+  color: #86868b;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.vm-back:hover {
+  color: #1d1d1f;
+  background: #ebebef;
+}
+
+.vm-back:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vm-disc-rot,
+  .vm-ring,
+  .vm-feed,
+  .vm-lever {
+    transition: none;
+  }
+
+  .vm-dock-anim.is-ejecting,
+  .vm-dock-anim.is-inserting,
+  .vm-feed.is-entering,
+  .vm-hanger {
+    animation: none;
+  }
+
+  .vm-hanger {
+    transition: none;
+  }
+}

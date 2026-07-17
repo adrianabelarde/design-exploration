@@ -1,0 +1,238 @@
+@import '@fontsource-variable/inter';
+
+:root {
+  color-scheme: light;
+  --eas-caption: #86868b;
+  --eas-caption-strong: #515154;
+  --eas-caption-hover: #1d1d1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter Variable', Inter, -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 64px 24px;
+  background: #f5f5f5;
+}
+
+/* ---- demo switcher -------------------------------------------------------- */
+
+.site-nav {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  z-index: 60;
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #c7c7cc;
+  user-select: none;
+}
+
+.site-nav a {
+  color: #a1a1a6;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: #515154;
+}
+
+.site-nav a.is-current {
+  color: #1d1d1f;
+}
+
+/* ---- the contract --------------------------------------------------------- */
+
+.contract {
+  width: min(660px, 100%);
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 56px 64px 48px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 24px 48px -24px rgba(0, 0, 0, 0.12);
+}
+
+.contract-no {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+.contract h1 {
+  margin: 0 0 16px;
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  color: #1d1d1f;
+}
+
+.lede,
+.witness {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #424245;
+}
+
+.clauses {
+  margin: 0 0 24px;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #424245;
+}
+
+.clauses li {
+  margin-bottom: 12px;
+}
+
+.clauses strong {
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.witness {
+  margin-bottom: 32px;
+}
+
+/* ---- signature field ------------------------------------------------------ */
+
+.sig-field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 28px 0 32px;
+}
+
+.sig-field .eas-root {
+  gap: 38px;
+}
+
+/* a little printed receipt, torn top and bottom */
+.stamp {
+  position: absolute;
+  top: 130px;
+  right: 34px;
+  z-index: 5;
+  width: fit-content;
+  transform: rotate(-4deg);
+  filter:
+    drop-shadow(0 5px 10px rgba(0, 0, 0, 0.09))
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
+  animation: stamp-in 0.4s cubic-bezier(0.22, 1.3, 0.36, 1) both;
+  pointer-events: none;
+}
+
+.stamp-paper {
+  padding: 11px 14px 12px;
+  background: #ffffff;
+  color: #1d1d1f;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  /* torn receipt edges */
+  clip-path: polygon(
+    0% 5px, 5% 0%, 10% 5px, 15% 0%, 20% 5px, 25% 0%, 30% 5px, 35% 0%,
+    40% 5px, 45% 0%, 50% 5px, 55% 0%, 60% 5px, 65% 0%, 70% 5px, 75% 0%,
+    80% 5px, 85% 0%, 90% 5px, 95% 0%, 100% 5px,
+    100% calc(100% - 5px), 95% 100%, 90% calc(100% - 5px), 85% 100%,
+    80% calc(100% - 5px), 75% 100%, 70% calc(100% - 5px), 65% 100%,
+    60% calc(100% - 5px), 55% 100%, 50% calc(100% - 5px), 45% 100%,
+    40% calc(100% - 5px), 35% 100%, 30% calc(100% - 5px), 25% 100%,
+    20% calc(100% - 5px), 15% 100%, 10% calc(100% - 5px), 5% 100%,
+    0% calc(100% - 5px)
+  );
+}
+
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) translateY(-10px) scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-4deg) translateY(0) scale(1);
+  }
+}
+
+/* the Etch A Sketch IS the signature input; this is its form label */
+.sig-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6e6e73;
+}
+
+.sig-head em {
+  font-style: normal;
+  color: #c81e12;
+}
+
+.sig-head span:last-child {
+  font-weight: 500;
+  color: #86868b;
+}
+
+/* ---- execute button ------------------------------------------------------- */
+
+.execute {
+  display: block;
+  margin: 32px auto 0;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 980px;
+  background: #1d1d1f;
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.12s ease;
+}
+
+.execute:hover:not(:disabled) {
+  background: #3a3a3c;
+}
+
+.execute:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.execute:disabled {
+  background: #e8e8ed;
+  color: #86868b;
+  cursor: default;
+}
+
+.execute.is-done {
+  background: #34c759;
+  color: #ffffff;
+}
+
+.fine-print {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: #a1a1a6;
+}
