@@ -7,6 +7,7 @@ The current explorations are:
 - Etch A Sketch — a physically inspired drawing interface
 - Polar Express — an interactive ticket-punching scene
 - View-Master — a tactile reel viewer
+- Codex Event presentation — a working presentation at `#/talk`
 
 ## Run locally
 

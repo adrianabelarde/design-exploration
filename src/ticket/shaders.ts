@@ -93,7 +93,11 @@ export const ticketVertexShader = /* glsl */ `
  * paper-colored rim ringing every hole.
  */
 export const ticketFragmentShader = /* glsl */ `
+  uniform float uTime;
+  uniform float uLightSweep;
+  uniform float uPresentationAlpha;
   uniform sampler2D uAlbedo;
+  uniform sampler2D uRoughnessSource;
   uniform sampler2D uPunch;
   uniform vec2 uPunchTexel;
   uniform vec3 uPaperColor;
@@ -118,7 +122,24 @@ export const ticketFragmentShader = /* glsl */ `
     float rim = clamp(hole, 0.0, 1.0);
 
     vec4 art = texture2D(uAlbedo, vTicketUv);
-    csm_DiffuseColor = vec4(mix(art.rgb, uPaperColor, rim * 0.9), 1.0);
+
+    // Presentation-only softbox sweep. The actual environment rotates too;
+    // this narrow glint makes the response legible from the back of a room.
+    // Smooth areas from the derived roughness map catch more of the streak.
+    float sweepCenter = fract(uTime * 0.11) * 1.4 - 0.2;
+    float sweepDistance = abs(vTicketUv.x - sweepCenter + (vTicketUv.y - 0.5) * 0.08);
+    float roughnessSource = texture2D(uRoughnessSource, vTicketUv).g;
+    float sweep = exp(-sweepDistance * sweepDistance * 95.0);
+    float halo = exp(-sweepDistance * sweepDistance * 24.0);
+    float glint = (sweep * 0.3 + halo * 0.08)
+      * (1.15 - roughnessSource * 0.55)
+      * uLightSweep;
+    art.rgb += vec3(1.0, 0.76, 0.32) * glint;
+
+    csm_DiffuseColor = vec4(
+      mix(art.rgb, uPaperColor, rim * 0.9),
+      uPresentationAlpha
+    );
     // Exposed paper core is dielectric.
     csm_Metalness = 1.0 - rim;
   }

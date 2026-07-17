@@ -27,9 +27,14 @@ export interface TicketHandle {
   reset(): void;
 }
 
+export type TicketPresentationStage = 'material' | 'drop' | 'interactive' | 'bend';
+
 interface TicketProps {
   art: TicketArt;
   confetti: React.RefObject<ConfettiHandle | null>;
+  presentationStage?: TicketPresentationStage;
+  loopEntry?: boolean;
+  punchable?: boolean;
   /** Screen position of each auto-punched hole, for the DOM punch tool. */
   onHoleScreen?: (pt: { x: number; y: number } | null) => void;
   onWordDone?: () => void;
@@ -53,7 +58,15 @@ interface PunchOpts {
  * punched hole pierces both at the identical physical spot.
  */
 export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
-  { art, confetti, onHoleScreen, onWordDone },
+  {
+    art,
+    confetti,
+    presentationStage = 'bend',
+    loopEntry = false,
+    punchable = true,
+    onHoleScreen,
+    onWordDone,
+  },
   ref,
 ) {
   const ticketH = TICKET_W / art.aspect;
@@ -74,17 +87,23 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
     () => new THREE.PlaneGeometry(TICKET_W, ticketH, 150, 70),
     [ticketH],
   );
+  const entryEnabled = presentationStage !== 'material';
+  const pointerEnabled = presentationStage === 'interactive' || presentationStage === 'bend';
+  const bendEnabled = presentationStage === 'bend';
+  const environmentIntensity = presentationStage === 'material' ? 1.35 : 0.7;
 
   const shared = useMemo(
     () => ({
       uTime: { value: 0 },
+      uLightSweep: { value: presentationStage === 'material' ? 1 : 0 },
+      uPresentationAlpha: { value: 1 },
       uSize: { value: new THREE.Vector2(TICKET_W, ticketH) },
       // Stiffer card stock: less resting curl, twist, and idle flutter than
       // plain paper — the ticket holds its shape between punches.
       uCurl: { value: 0.021 },
       uCornerLift: { value: 0.042 },
       uTwist: { value: 0.006 },
-      uFlutter: { value: reduced ? 0 : 0.008 },
+      uFlutter: { value: reduced || !bendEnabled ? 0 : 0.008 },
       uFallBend: { value: 0 },
       // Entry rail: ticket center travels 6.0 arc units, starting well past
       // the top of the frame even at the far rail depth. The rail is fixed
@@ -95,8 +114,12 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
       // [2.0, 3.6]: the jog plays crisply near the top of the screen and
       // the ticket is dead flat long before landing.
       uPathS: { value: 0 },
-      uPathAmp: { value: 1.6 },
-      uPathBend: { value: new THREE.Vector2(2.4, 4.0) },
+      uPathAmp: { value: bendEnabled ? (loopEntry ? 2.6 : 1.6) : 0 },
+      uPathBend: {
+        value: loopEntry
+          ? new THREE.Vector2(2.0, 4.4)
+          : new THREE.Vector2(2.4, 4.0),
+      },
       uRipples: {
         value: Array.from({ length: 6 }, () => new THREE.Vector4(0, 0, -10, 0)),
       },
@@ -112,14 +135,22 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
       uPunchTexel: { value: new THREE.Vector2(2.4 / mask.width, 2.4 / mask.height) },
       uPaperColor: { value: new THREE.Color('#f3ecd6') },
     }),
-    [ticketH, reduced, mask],
+    [ticketH, reduced, mask, bendEnabled, presentationStage, loopEntry],
   );
   const frontUniforms = useMemo(
-    () => ({ ...shared, uAlbedo: { value: art.front.map } }),
+    () => ({
+      ...shared,
+      uAlbedo: { value: art.front.map },
+      uRoughnessSource: { value: art.front.roughnessMap },
+    }),
     [shared, art],
   );
   const backUniforms = useMemo(
-    () => ({ ...shared, uAlbedo: { value: art.back.map } }),
+    () => ({
+      ...shared,
+      uAlbedo: { value: art.back.map },
+      uRoughnessSource: { value: art.back.roughnessMap },
+    }),
     [shared, art],
   );
 
@@ -293,19 +324,42 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
     // frame stalls (shader compile, texture upload), the animation waits
     // instead of skipping ahead, so the entry can never visibly jump.
     entryT.current += Math.min(dt, 1 / 30);
-    const p = reduced
+    const loopedEntry = loopEntry && entryEnabled && !reduced;
+    const entryDelay = loopedEntry ? 0.3 : 0.35;
+    const entryDuration = loopedEntry ? (bendEnabled ? 2.6 : 2.15) : 1.35;
+    const holdDuration = loopedEntry ? 1.4 : 0;
+    const fadeDuration = loopedEntry ? 0.32 : 0;
+    const cycleDuration = entryDelay + entryDuration + holdDuration + fadeDuration;
+    const timeline = loopedEntry
+      ? entryT.current % cycleDuration
+      : entryT.current;
+    const p = reduced || !entryEnabled
       ? 1
-      : THREE.MathUtils.clamp((entryT.current - 0.35) / 1.35, 0, 1);
-    const drop = 1 - Math.pow(1 - p, 3);
+      : THREE.MathUtils.clamp((timeline - entryDelay) / entryDuration, 0, 1);
+    const drop = loopedEntry
+      ? p * p * (3 - 2 * p)
+      : 1 - Math.pow(1 - p, 3);
     const sCenter = drop * 6.0;
     eg.position.y = 6.0 - sCenter;
     shared.uPathS.value = sCenter;
+    if (loopedEntry) {
+      const fadeStart = entryDelay + entryDuration + holdDuration;
+      shared.uPresentationAlpha.value = timeline < entryDelay
+        ? 0
+        : timeline < fadeStart
+          ? 1
+          : 1 - THREE.MathUtils.clamp((timeline - fadeStart) / fadeDuration, 0, 1);
+    } else {
+      shared.uPresentationAlpha.value = 1;
+    }
 
     // Live flutter wobble while falling (falling cards oscillate, they
     // never drop rigid). Amplitude follows the actual falling SPEED
     // ((1-p)^2, the ease-out's velocity profile), so the wobble dies with
     // the motion instead of wiggling the sheet as it parks.
-    shared.uFallBend.value = (1 - p) * (1 - p) * 0.045 * Math.sin(timeRef.current * 9.5);
+    shared.uFallBend.value = bendEnabled
+      ? (1 - p) * (1 - p) * 0.045 * Math.sin(timeRef.current * 9.5)
+      : 0;
 
     kick.current.x *= Math.exp(-7 * dt);
     kick.current.y *= Math.exp(-7 * dt);
@@ -314,16 +368,24 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
     // glint travels across the engraving. Punches kick the lean momentarily.
     // Pointer-follow runs during the slide too, so the landing pose already
     // matches the cursor and nothing shifts once the entry finishes.
-    damp(g.rotation, 'x', -state.pointer.y * 0.36 + kick.current.x, 0.16, dt);
-    damp(g.rotation, 'y', state.pointer.x * 0.55 + kick.current.y, 0.16, dt);
-    g.rotation.z = Math.sin(timeRef.current * 0.33) * 0.018;
-    g.position.y = reduced ? 0 : Math.sin(timeRef.current * 0.7) * 0.045;
+    const targetRotationX = pointerEnabled ? -state.pointer.y * 0.36 : 0.02;
+    const targetRotationY = pointerEnabled ? state.pointer.x * 0.55 : -0.05;
+    const idleY = reduced || !pointerEnabled ? 0 : Math.sin(timeRef.current * 0.7) * 0.045;
+    damp(g.rotation, 'x', targetRotationX + kick.current.x, 0.16, dt);
+    damp(g.rotation, 'y', targetRotationY + kick.current.y, 0.16, dt);
+    damp(g.position, 'x', pointerEnabled ? state.pointer.x * 0.16 : 0, 0.18, dt);
+    damp(g.position, 'y', (pointerEnabled ? state.pointer.y * 0.1 : 0) + idleY, 0.18, dt);
+    g.rotation.z = pointerEnabled ? Math.sin(timeRef.current * 0.33) * 0.018 : 0;
   });
 
   return (
     <group ref={entryGroup}>
       <group ref={group}>
-        <mesh ref={frontMesh} geometry={geometry} onPointerDown={onPunch}>
+        <mesh
+          ref={frontMesh}
+          geometry={geometry}
+          onPointerDown={punchable ? onPunch : undefined}
+        >
         <CustomShaderMaterial
           baseMaterial={THREE.MeshPhysicalMaterial}
           vertexShader={ticketVertexShader}
@@ -334,14 +396,16 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
           roughnessMap={art.front.roughnessMap}
           roughness={1}
           metalness={1}
-          envMapIntensity={0.7}
+          envMapIntensity={environmentIntensity}
           clearcoat={0.1}
           clearcoatRoughness={0.6}
           iridescence={0.05}
+          transparent={loopEntry}
+          depthWrite={!loopEntry}
           side={THREE.FrontSide}
         />
       </mesh>
-      <mesh geometry={geometry} onPointerDown={onPunch}>
+      <mesh geometry={geometry} onPointerDown={punchable ? onPunch : undefined}>
         <CustomShaderMaterial
           baseMaterial={THREE.MeshPhysicalMaterial}
           vertexShader={ticketVertexShader}
@@ -352,10 +416,12 @@ export const Ticket = forwardRef<TicketHandle, TicketProps>(function Ticket(
           roughnessMap={art.back.roughnessMap}
           roughness={1}
           metalness={1}
-          envMapIntensity={0.7}
+          envMapIntensity={environmentIntensity}
           clearcoat={0.1}
           clearcoatRoughness={0.6}
           iridescence={0.05}
+          transparent={loopEntry}
+          depthWrite={!loopEntry}
           side={THREE.BackSide}
         />
       </mesh>

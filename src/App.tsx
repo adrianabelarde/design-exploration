@@ -3,10 +3,12 @@ import ContractPage from './pages/ContractPage';
 
 const TicketPage = lazy(() => import('./pages/TicketPage'));
 const ReelPage = lazy(() => import('./pages/ReelPage'));
+const TalkPage = lazy(() => import('./presentation/TalkPage'));
 
-type Route = 'contract' | 'ticket' | 'reel';
+type Route = 'contract' | 'ticket' | 'reel' | 'talk';
 
 function routeFromHash(): Route {
+  if (window.location.hash.startsWith('#/talk')) return 'talk';
   if (window.location.hash.startsWith('#/ticket')) return 'ticket';
   if (window.location.hash.startsWith('#/reel')) return 'reel';
   return 'contract';
@@ -21,6 +23,14 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  if (route === 'talk') {
+    return (
+      <Suspense fallback={<main className="stage" />}>
+        <TalkPage />
+      </Suspense>
+    );
+  }
+
   return (
     <>
       <nav className="site-nav" aria-label="Demos">
@@ -34,6 +44,10 @@ export default function App() {
         <span aria-hidden="true">/</span>
         <a href="#/reel" className={route === 'reel' ? 'is-current' : ''}>
           view master
+        </a>
+        <span aria-hidden="true">/</span>
+        <a href="#/talk">
+          talk
         </a>
       </nav>
       {route === 'contract' ? (

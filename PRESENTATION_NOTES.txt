@@ -1,0 +1,1272 @@
+PRESENTATION IDEA DUMP
+======================
+
+This is the scratchpad. These are not formal presentation notes or a finished
+outline. Keep gathering fragments, phrases, examples, and possible directions.
+
+
+CURRENT DIRECTION
+-----------------
+
+I will be speaking at a Codex event.
+
+The talk should showcase projects and explain how I use AI to steer my design
+ideas into real interfaces, experiments, and products.
+
+I do not want the presentation to become a long promotion for Keeby. Keeby can
+be part of the story because users loved it and it reached more than $6,000 in a
+single month, with revenue now around $7,400, but it should be evidence rather
+than the whole talk.
+
+I want to show how I think, how I direct AI, how I know when an interface feels
+right, and how I turn strange interaction ideas into things people can touch.
+
+
+MY ORIGINAL NOTES
+-----------------
+
+I am the founder of Keeby. I want to share how I was able to make Keeby loved by
+its users without spending the whole talk promoting it.
+
+People know me for UI work and for making interactions feel more alive and real.
+
+I am a huge fan of Xavier Jack. I like his framing of “interaction feel” as the
+application of “game feel” to everyday user interfaces.
+
+Reference talk:
+https://www.youtube.com/watch?v=JowzyZgIKrM
+
+Portfolio:
+https://adrianabelarde.com/
+
+Recent interaction experiments:
+
+- E-signature field, but Etch A Sketch — 895.3K views
+- RSVP, but Polar Express golden ticket — 907.1K views
+
+
+PROJECTS I MAY SHOWCASE
+-----------------------
+
+1. Keeby
+   What part of the AI steering process should I show?
+
+2. E-signature Field / Etch A Sketch
+   What was the original idea?
+   What did I ask AI to build?
+   What details did I keep correcting?
+
+3. Polar Express Golden Ticket RSVP
+   What did AI get right quickly?
+   What required taste and manual direction?
+
+4. ________________________________________________
+
+5. ________________________________________________
+
+
+POSSIBLE TALK ANGLES
+--------------------
+
+- AI can generate an interface, but it still needs someone to steer the feeling.
+- Taste is the ability to notice what is almost right.
+- The prompt is not only a description of the UI. It is direction for behavior,
+  physics, timing, personality, and emotional response.
+- AI makes more iterations possible. Taste decides which iterations survive.
+- The interesting story is the loop between idea, prototype, correction, and
+  user response.
+
+
+REFERENCE NOTES FROM XAVIER JACK
+--------------------------------
+
+- The same features can feel completely different.
+- Interaction feel brings game-feel thinking into everyday software.
+- It comes from design, motion, and engineering working together.
+- Direct manipulation should feel continuous and responsive.
+- Natural constraints can teach the interaction without instructions.
+- Much of the final quality comes from repeatedly tweaking values and behavior.
+- Users feel the difference even when they cannot name the implementation.
+
+
+DO NOT OVER-FOCUS ON
+--------------------
+
+- Keeby latency or deep audio-engine details
+- A long Keeby product pitch
+- Generic animation advice
+- Complicated presentation UI
+- Decorative elements that do not help the story
+
+
+AVAILABLE LATER
+---------------
+
+- Hugeicons Pro is installed and available when a future slide genuinely needs
+  an icon.
+- The supplied X post images are already stored in src/assets.
+- The complete auto-generated SRT is in the Downloads folder.
+
+
+NEW NOTES
+---------
+
+
+BIG PICTURE
+
+This talk is not only about design taste.
+
+It may really be about three connected things:
+
+1. FEEL — how uncommon care makes a useful product feel loved.
+2. STEERING — how I communicate visual and interaction ideas to AI.
+3. DISTRIBUTION — how I build in public and help the work find people.
+
+Possible larger thesis:
+
+Taste is not only how a product looks. It shapes how the product responds, how
+I communicate with AI, and how I introduce the work to the world.
+
+
+WHAT COULD COME IMMEDIATELY AFTER THE TITLE
+
+Do not jump straight into a tool list.
+
+Let the audience experience the point first.
+
+Possible next moment:
+
+SAME FEATURE. DIFFERENT FEEL.
+
+Show two versions of the same tiny interaction. They should complete the exact
+same task. One technically works but feels inert. The other has immediate
+feedback, better timing, physical continuity, and a satisfying finish.
+
+Do not explain the difference before demonstrating it. Let people touch it or
+watch it, then name what they just felt: interaction feel.
+
+The existing draggable description, resize handle, width tooltip, and Unslop
+interaction could already be part of this argument. The presentation itself is
+evidence. After someone plays with it, the transition could simply be:
+
+"You just felt the difference."
+
+Possible wording:
+
+- The feature is what it does. The feel is how it responds.
+- Two interfaces can do the same thing and leave completely different
+  impressions.
+- A feature can be correct without being satisfying.
+- People use features. They remember how the product responded.
+- The outcome can be identical while the experience is completely different.
+- The checklist says they are the same. Your hands say they are not.
+
+Possible way to explain game feel versus interaction feel:
+
+Game feel asks whether controlling the character feels good moment to moment,
+even before considering the level or objective.
+
+Interaction feel asks whether using an interface feels responsive, expressive,
+and satisfying moment to moment, even when the underlying feature is ordinary.
+
+This is not about adding animation everywhere. It is about making actions feel
+acknowledged, continuous, physical, and complete.
+
+
+DETAILS THAT CREATE INTERACTION FEEL
+
+- Immediate visual feedback
+- Haptic feedback when the physical response actually adds meaning
+- Sound when it reinforces an action instead of becoming noise
+- Micro-animations that explain cause and effect
+- Timing, easing, velocity, resistance, momentum, and settling
+- Direct manipulation instead of abstract controls when appropriate
+- Natural constraints that teach the interaction
+- Continuity: objects should feel like they came from somewhere
+- A satisfying ending state, not just an animated beginning
+- Repeatedly tweaking values and trying the interaction by feel
+
+Interaction feel is a mixture of design, motion, and engineering. It is not a
+decorative layer applied after the feature is finished.
+
+Possible phrase:
+
+"Uncommon care is often invisible in the screenshot but obvious in the hand."
+
+
+KEEBY AS EVIDENCE, NOT THE ENTIRE TALK
+
+The Keeby part can answer:
+
+How did a useful app become something users felt affection for?
+
+Do not make the claim that polish alone made Keeby successful. The stronger
+idea is that utility earned use, while interaction feel and uncommon care helped
+turn use into affection.
+
+Possible wording:
+
+- Keeby is not the whole story. It is proof that users feel the details.
+- Utility gets someone through the door. Feeling gives them a reason to care.
+- The goal was not to make Keeby animated. The goal was to make it attentive.
+- Loved products acknowledge people at every small moment.
+
+Possible Keeby things to show later:
+
+- One haptic moment and why it happens there
+- One micro-animation before and after tuning
+- One interaction that technically worked early but did not feel right yet
+- A user reaction that describes affection rather than a feature request
+- The iteration loop: build, touch, notice, adjust, repeat
+
+
+THE AI STEERING SECTION
+
+AI increases the number of ideas I can try. Taste still decides what survives.
+
+The interesting part is not that AI wrote the code. The interesting part is how
+I reduce the gap between what I can feel in my head and what the AI can build.
+
+Possible loop:
+
+IDEA -> MAKE IT VISIBLE -> GIVE AI PRECISE CONTEXT -> FEEL THE RESULT -> TWEAK
+
+or:
+
+NOTICE -> GRAB -> STEER -> FEEL -> REFINE -> SHIP
+
+
+REACT GRAB
+
+https://www.react-grab.com/
+
+React Grab is useful when the interface is already visible and I want to point
+the coding agent at the exact element behind it. I use it for quick, specific UI
+edits instead of spending a paragraph describing where the element lives.
+
+The important point is not merely "here is a tool I use." It demonstrates a
+larger principle:
+
+Give AI concrete context instead of making it guess what you mean.
+
+Possible wording:
+
+- Point at the thing instead of describing the neighborhood.
+- The less the AI has to locate, the more attention it can spend on the change.
+- Precise context makes taste actionable.
+- React Grab closes the distance between noticing and editing.
+
+Could demo:
+
+1. Notice a detail that feels off.
+2. Grab the exact element.
+3. Ask Codex for one specific adjustment.
+4. Touch the result.
+5. Continue correcting by feel.
+
+
+COMMUNICATING MOTION VISUALLY
+
+The golden-ticket slide-down animation is a strong example because words alone
+were not the best way to explain the motion.
+
+Instead of repeatedly prompting with vague phrases such as "make it slide down
+but a little backward first," I made a visual diagram showing:
+
+- Front view: the main downward travel
+- Side view: start slightly behind, follow an S-shaped path, finish slightly
+  forward at the original position
+- Back view: the same main downward travel
+
+The SVG or Figma diagram becomes a shared spatial language between me and AI.
+
+Possible wording:
+
+- If motion is spatial, communicate it spatially.
+- A sketch can be a better prompt than another paragraph.
+- I do not only prompt AI with words. I give it artifacts it can reason from.
+- The diagram is not documentation after the fact. It is part of the prompt.
+- Taste becomes easier to steer when the intention is visible.
+
+Possible live sequence:
+
+1. Show the final golden-ticket animation.
+2. Ask the room how they would describe that movement in words.
+3. Show the simple front / side / back diagram.
+4. Show how Codex turned the drawing into motion.
+5. Explain the remaining value tweaks that only came from trying it repeatedly.
+
+
+BUILDING IN PUBLIC AND DISTRIBUTION
+
+Designing the thing is only part of the job. People still need to discover it.
+
+Building in public is not only marketing after the product exists. Publishing
+experiments creates distribution, feedback, proof of resonance, and sometimes
+new product ideas.
+
+The Etch A Sketch signature and Polar Express golden ticket posts are good
+examples. They are memorable interaction ideas that communicate themselves in
+seconds and earned roughly 895K and 907K views.
+
+Possible loop:
+
+BUILD SOMETHING INTERESTING -> SHARE IT -> OBSERVE REACTION -> LEARN -> BUILD
+
+Possible wording:
+
+- Build in public turns the process into distribution.
+- Interesting interaction ideas are naturally demonstrable.
+- A product people can understand in one clip is easier to share.
+- The demo is part of the distribution strategy.
+- Taste helps the work earn attention; distribution helps the attention travel.
+
+Do not frame organic and inorganic marketing as opposing religions.
+
+Possible position:
+
+- Organic reveals what resonates. Paid distribution amplifies what already has
+  proof.
+- Use organic to discover the message. Use inorganic to scale the message.
+- Great products deserve both earned attention and deliberate distribution.
+- I am not biased toward organic or paid. They solve different problems, and
+  strong companies should understand both.
+
+
+POSSIBLE TALK SHAPE, NOT A COMMITTED OUTLINE
+
+1. Interactive title page — the presentation already responds to the audience.
+2. Same feature, different feel — experience the thesis before defining it.
+3. Name it: interaction feel, inspired by game feel.
+4. Keeby — how utility plus uncommon care created affection.
+5. How I steer AI — concrete context, React Grab, visual artifacts, iteration.
+6. Golden ticket — communicating a three-dimensional motion idea with a simple
+   front / side / back diagram.
+7. Build in public — interaction experiments as both craft and distribution.
+8. Organic plus inorganic — discover resonance, then amplify it.
+9. Closing thought — AI expands what can be made; taste, care, and distribution
+   decide what becomes memorable.
+
+
+POSSIBLE CLOSING LINES TO KEEP AROUND
+
+- AI can make the interface. Care makes it feel considered.
+- AI gives me more attempts. Taste tells me when to stop.
+- The feature makes it useful. The feeling makes it memorable. Distribution
+  gives it a chance to matter.
+- Make the intention visible, make the interaction feel right, then help the
+  work find its people.
+- The future is not only faster software. It is more personal software, steered
+  with enough care that people can feel the person behind it.
+
+
+TOOLS FIRST OR TOOLS INSIDE THE DEMOS?
+
+Strongest direction: put each tool inside the demo at the exact moment it solves
+a problem, then show a very short toolkit recap after the demos.
+
+A tools-first section risks becoming a list of software names without tension or
+context. A demo-first section gives the audience a reason to care about each
+tool.
+
+Possible principle:
+
+"Do not introduce the tool until the audience understands the problem it solved."
+
+Hybrid structure:
+
+1. Show the memorable result first.
+2. Reveal the design or communication problem.
+3. Introduce the artifact or tool that unlocked it.
+4. Show one or two important steering decisions.
+5. Replay the final result with new understanding.
+6. End the demo with one reusable lesson.
+7. After all demos, briefly recap the toolkit and what each tool is for.
+
+This keeps the story about judgment and process rather than turning the talk into
+a React Grab, Codex, or Figma tutorial.
+
+
+GOLDEN TICKET DEMO FLOW
+
+Open with the finished interaction. Let the ticket fall, settle, and respond.
+Do not explain it yet.
+
+Possible first line:
+
+"I wanted RSVP to feel less like submitting a form and more like receiving an
+invitation."
+
+Then reveal the simple idea:
+
+RSVP, but the Polar Express golden ticket.
+
+The hard part was not drawing a ticket or making it move downward. The hard part
+was communicating how it should travel through space so it felt like a physical
+object entering the scene.
+
+Show the front / side / back diagram.
+
+Explain that words such as "slide down smoothly" were too vague. The side view
+communicated the actual intention: begin slightly behind, curve forward during
+the descent, and settle at the original depth.
+
+Possible sequence:
+
+1. Final golden-ticket animation with no explanation.
+2. The idea in one sentence.
+3. A plain downward slide that technically works but feels flat.
+4. The front / side / back diagram.
+5. How the diagram was given to Codex as spatial context.
+6. One or two value changes: timing, curve, settling, layering, or depth.
+7. Replay the final animation.
+8. Reusable lesson: if the intention is spatial, communicate it spatially.
+
+The SVG is the tool inside this demo. Codex is the implementation partner. The
+point is how the visual artifact made taste more legible to AI.
+
+
+POSSIBLE REACT GRAB DEMO
+
+React Grab may fit better in a different, smaller demo where the interface is
+already running and one exact detail feels wrong.
+
+Possible live moment using the presentation itself:
+
+1. Notice a tooltip, spacing value, or interaction detail that needs adjustment.
+2. Grab the exact element.
+3. Send the selected context to Codex.
+4. Ask for one narrow change.
+5. Touch the result and make one follow-up correction by feel.
+
+This communicates the real workflow better than explaining React Grab on a
+separate slide.
+
+Possible line:
+
+"The moment I notice something feels wrong, I want the distance between noticing
+and editing to be almost zero."
+
+Keep a recorded fallback of the live edit in case the event environment is slow.
+
+
+DEMO RHYTHM
+
+Avoid turning every project into a full technical breakdown.
+
+Each demo only needs:
+
+RESULT -> PROBLEM -> STEERING MOVE -> RESULT AGAIN -> LESSON
+
+Possible project roles:
+
+- Keeby: evidence that useful software can become loved through attentive
+  interaction details.
+- Golden Ticket: communicating motion and physicality to AI with a visual
+  artifact.
+- Etch A Sketch signature: turning a strange cultural association into a
+  memorable interaction and distributable public demo.
+- The presentation itself: using React Grab and Codex to make a precise live UI
+  adjustment.
+
+Two deep demos are probably stronger than five shallow demos. Keeby can remain
+the emotional proof, Golden Ticket can be the main process breakdown, and Etch A
+Sketch can bridge into building in public and distribution.
+
+
+SHORT TOOLKIT RECAP AFTER THE DEMOS
+
+Only after the audience has seen the tools solve real problems:
+
+- Codex: implementation and iteration partner
+- React Grab: exact element context for precise edits
+- Figma / SVG / sketches: visible spatial intent
+- Browser and direct manipulation: feel the result instead of judging only code
+- Public posts: distribution, feedback, and proof of resonance
+
+Possible closing line for the toolkit recap:
+
+"The tools change depending on the problem. The loop stays the same: make the
+intention visible, build it, feel it, and keep adjusting."
+
+
+MORE COMMITTED INTRO DIRECTION
+
+The intro should establish interaction feel before Keeby, AI tools, or project
+demos.
+
+Possible arc:
+
+1. Let the audience interact with the title page.
+2. Introduce interaction feel.
+3. Show the game-feel comparison: same features, different feel.
+4. Explain that this is not a new concept.
+5. Show Steve Jobs demonstrating scrolling on the original iPhone in 2007 and
+   let the audience hear the crowd reaction.
+6. Explain that we now take that interaction for granted precisely because it
+   became natural.
+7. Bring the lineage forward to Apple and Liquid Glass.
+8. Establish that interaction feel is not design, motion, or engineering alone.
+9. Demonstrate how the three compound into an engaging result.
+10. Transition into Keeby and the personal project demos.
+
+
+INTRO SLIDE / MOMENT IDEAS
+
+MOMENT 1 — INTERACTION FEEL
+
+The title page is already the first demonstration. The resize handle, live width
+value, hover bridge, tooltip press state, independent Unslop controls, and smooth
+text reflow can happen before the theory.
+
+Possible transition:
+
+"Everything worked without those details. But it would not have felt the same."
+
+
+MOMENT 2 — SAME FEATURES, DIFFERENT FEEL
+
+Use Xavier Jack's game comparison.
+
+Both versions have:
+
+- A character
+- Keyboard navigation
+- Physics
+- Platforms
+
+The checklist is identical. The experience is not.
+
+The polished version adds animation, flow, camera behavior, personality, and
+better-tuned physical response.
+
+Possible wording:
+
+"If we judged these games by their feature lists, they would be the same game.
+But nobody playing them would describe them as the same experience."
+
+Then define the connection:
+
+"Game feel is the quality of controlling a game from moment to moment.
+Interaction feel applies that thinking to everyday interfaces."
+
+Possible short definition:
+
+"Interaction feel is how responsive, expressive, and emotionally satisfying an
+interface feels while you use it."
+
+
+MOMENT 3 — THIS IS NOT NEW
+
+Do not frame interaction feel as a new AI-era discovery.
+
+Possible title:
+
+THIS ISN'T NEW.
+
+or:
+
+WE HAVE FELT THIS BEFORE.
+
+Show the 2007 iPhone keynote clip where Steve Jobs scrolls through a list using
+his finger and the room reacts loudly.
+
+The interaction now looks ordinary. The crowd reaction reveals how unusual and
+physical it felt at the time.
+
+Possible lines before the clip:
+
+- "Today this requires no explanation. In 2007, it made a room erupt."
+- "The feature was a contact list. The breakthrough was how it responded to a
+  finger."
+- "Scrolling was not new. This relationship between movement and response felt
+  new."
+
+Possible line after the clip:
+
+"We call it obvious now because someone cared enough to make it feel obvious."
+
+or:
+
+"We take it for granted because the interaction taught an entire generation how
+to use it."
+
+Keep this clip short. The audience reaction is the evidence. Do not explain the
+entire iPhone launch.
+
+
+MOMENT 4 — APPLE KEPT GOING
+
+Bring the history forward with Liquid Glass, but use it as evidence of Apple's
+continued investment in interaction behavior rather than starting a debate
+about whether every visual choice is beautiful.
+
+Apple describes Liquid Glass as a dynamic material that reacts to movement,
+adapts to context, and was created through close collaboration between design
+and engineering. The useful part for this talk is the lineage:
+
+- Software responds to movement.
+- Materials communicate depth and hierarchy.
+- Controls transform with context.
+- Hardware, graphics, design, and engineering are considered together.
+
+Possible transition:
+
+"Almost twenty years later, Apple is still investing enormous effort in making
+software feel like a responsive material."
+
+Possible visual:
+
+Use a very short Liquid Glass dynamics clip showing a control flexing, morphing,
+or reacting to touch. Motion is stronger evidence than a static screenshot.
+
+
+MOMENT 5 — IT IS THE SUM
+
+Cleaner wording than the reference slide:
+
+"Interaction feel is not a layer.
+It is the sum of design, motion, and engineering."
+
+or:
+
+"Beautiful design, good motion, and precise engineering do not compete.
+Interaction feel is what happens when they agree."
+
+Possible three-part model:
+
+DESIGN
+What should be visible? What should feel important? What is the affordance?
+
+MOTION
+How does the interface acknowledge input, preserve continuity, and settle?
+
+ENGINEERING
+Is the response immediate, interruptible, constrained, accessible, and robust?
+
+FEEL
+The compound result that users experience without separating the ingredients.
+
+
+DO NOT MAKE THE NEXT SECTION A GENERIC EASING LECTURE
+
+Avoid a long presentation about curve terminology. Demonstrate the curves on a
+real interaction and let the audience feel the difference.
+
+Possible mini-demo:
+
+Move the same object between the same two points using:
+
+1. Linear movement
+2. Weak default easing
+3. A strong ease-out
+4. A restrained spring
+
+The destination and duration can remain similar. The character of the movement
+changes.
+
+Possible line:
+
+"The values are implementation details. The important skill is noticing what
+each value makes the interaction communicate."
+
+Even better: deconstruct the current interactive title page instead of creating
+an abstract easing slide.
+
+DESIGN in the title page:
+
+- Clear typography and visual hierarchy
+- The blue selection affordance
+- A handle that looks draggable
+- A tooltip placed exactly where the action happens
+
+MOTION in the title page:
+
+- Tooltip scales up on hover
+- Tooltip compresses on press and returns on release
+- Words glide into their new positions after removing an em dash
+- The response stays restrained and quick
+
+ENGINEERING in the title page:
+
+- Pointer capture keeps the resize alive outside the small handle
+- Width constraints prevent broken layouts
+- An invisible hover bridge makes the tooltip reachable
+- Each em dash is independently actionable
+- Keyboard control and reduced-motion behavior are considered
+
+The audience can first experience the finished interaction, then see how the
+three disciplines created it together.
+
+
+TRANSITION FROM THEORY INTO KEEBY
+
+Possible transition question:
+
+"If these details can make an ordinary scroll feel magical, can they make a
+small utility feel loved?"
+
+Then introduce Keeby as the answer and evidence.
+
+Alternative:
+
+"That became the question behind how I built Keeby: not only, does the feature
+work—but does every response make the user feel considered?"
+
+This brings the talk from Xavier's framing and Apple's history into Adrian's own
+work without claiming ownership of the interaction-feel concept.
+
+
+STRICT 20-MINUTE VERSION
+
+Assume the entire speaking slot is 20 minutes. Build approximately 18 minutes
+and 30 seconds of material, leaving 90 seconds for laughter, applause, switching
+windows, a slow live demo, or one forgotten sentence.
+
+The talk has three acts:
+
+FEEL -> STEER -> SHARE
+
+
+0:00–0:45 — INTERACTIVE OPENING
+
+Start on the title page. Let the resize and Unslop interactions establish the
+personality immediately.
+
+Do not explain every detail yet.
+
+Core line:
+
+"Everything worked without those details. But it would not have felt the same."
+
+
+0:45–2:30 — SAME FEATURES, DIFFERENT FEEL
+
+Show Xavier's game-feel comparison.
+
+Both games have a character, keyboard navigation, physics, and platforms. The
+feature checklist is the same. The experience is not.
+
+Define interaction feel in one sentence and move on.
+
+
+2:30–3:45 — THIS ISN'T NEW
+
+Show a 10–15 second section of Steve Jobs scrolling on the original iPhone and
+let the crowd reaction make the point.
+
+Do not explain the whole iPhone launch.
+
+Core line after the clip:
+
+"We call it obvious now because someone cared enough to make it feel obvious."
+
+
+3:45–4:30 — APPLE KEPT GOING
+
+Show one very short Liquid Glass dynamics clip or visual.
+
+The point is not to review Liquid Glass. The point is that Apple still invests
+heavily in software behaving like a responsive material.
+
+
+4:30–5:30 — IT IS THE SUM
+
+Interaction feel is the sum of:
+
+- Beautiful design
+- Good motion
+- Precise engineering
+
+Use the current presentation interaction as the example. Mention only one or two
+details from each discipline. If showing easing, make it a 15-second contrast,
+not an easing lesson.
+
+
+5:30–7:30 — KEEBY: CAN A UTILITY FEEL LOVED?
+
+Keeby is evidence, not a product pitch.
+
+Cover only:
+
+- The useful problem it solves
+- One interaction or haptic detail
+- One user reaction or signal of affection
+- The lesson: utility earned use; uncommon care helped create attachment
+
+Do not explain Keeby architecture, latency, or every feature.
+
+
+7:30–12:30 — MAIN DEMO: GOLDEN TICKET
+
+This is the deepest project breakdown and the center of the talk.
+
+Sequence:
+
+1. Play the finished result.
+2. Explain the idea in one sentence.
+3. Show the technically correct but flat downward slide.
+4. Reveal the front / side / back motion diagram.
+5. Explain why the visual artifact communicated more than another paragraph.
+6. Show how Codex translated the diagram into motion.
+7. Mention only the most important tuning decision.
+8. Replay the final result.
+
+Core lesson:
+
+"If the intention is spatial, communicate it spatially."
+
+
+12:30–14:00 — PRECISE EDITING WITH REACT GRAB
+
+Keep this to one narrow edit.
+
+Grab an exact element, send it to Codex, request one specific change, and show
+the result. The live demo should prove that the distance between noticing and
+editing can be almost zero.
+
+Have a recorded fallback. Do not troubleshoot live for more than a few seconds.
+
+
+14:00–17:30 — BUILDING IN PUBLIC IS DISTRIBUTION
+
+Use the Etch A Sketch signature and Golden Ticket posts as fast visual proof.
+
+Connect interaction ideas to distribution:
+
+- Memorable interactions communicate themselves in short clips.
+- Sharing the process creates feedback and organic reach.
+- Organic distribution reveals what resonates.
+- Inorganic distribution amplifies proven resonance.
+
+Do not teach an entire marketing framework. Make one clear point: building and
+distribution are connected loops.
+
+
+17:30–18:30 — CLOSE THE LOOP
+
+Return to the three-act structure:
+
+FEEL — Make the interaction worth remembering.
+STEER — Make the intention legible to AI.
+SHARE — Help the work find its people.
+
+Possible final line:
+
+"The feature makes it useful. The feeling makes it memorable. Distribution gives
+it a chance to matter."
+
+
+18:30–20:00 — PROTECTED BUFFER
+
+Do not fill this on purpose.
+
+
+WHAT TO CUT FOR THE 20-MINUTE VERSION
+
+- No full history of Apple interaction design
+- No detailed Liquid Glass critique
+- No generic easing taxonomy
+- No code walkthrough
+- No more than one deep project demo
+- No separate tools section
+- No long Keeby feature tour
+- No detailed marketing playbook
+- No more than two full video clips
+
+The audience only needs to remember three things:
+
+1. Same features can feel completely different.
+2. Visual and precise context helps steer AI toward the intended feeling.
+3. Building in public helps memorable work find an audience.
+
+
+NEW PROJECT DETAILS TO CAPTURE
+
+ETCH A SKETCH
+
+The Etch A Sketch interaction had a visual problem that AI repeatedly failed to
+nail: the two knobs.
+
+The knobs needed to feel like the real physical object, and the gradient was
+important to their depth and material. AI kept producing something that was
+technically knob-shaped but visually wrong.
+
+Instead of continuing to prompt indefinitely, make the knobs separately in
+Figma. Use the correct angular gradient there, then bring the finished visual
+artifact back into the implementation.
+
+Possible lesson:
+
+"Taste is also knowing when to stop prompting and take control of the artifact."
+
+or:
+
+"AI did not need to make every pixel. It needed the correct piece to continue."
+
+This is a useful example of filling the gap with the tool that offers the right
+kind of control.
+
+Possible Etch sequence:
+
+1. The idea: an e-signature field, but Etch A Sketch.
+2. Nail the overall layout.
+3. Make the interaction work.
+4. Show the incorrect AI-generated knob attempts.
+5. Show the separate Figma construction and angular gradient.
+6. Reintroduce the corrected knobs.
+7. Add only the subtle animations that make the object feel physical.
+8. Show the final interaction and the public response.
+
+Reusable lesson:
+
+"Use AI for speed, then change tools when precision becomes the bottleneck."
+
+
+KEEBY: WHERE AI DRIFTS
+
+Show recent Keeby work where AI starts correctly but gradually drifts away from
+the intended interaction or visual behavior.
+
+Current example: the Notch overlay feature.
+
+The important story is not that AI failed. It is that there is a handoff point
+where judgment, manual design, and engineering must fill the remaining gap.
+
+Possible wording:
+
+- "AI drift is not the end of the workflow. It is the moment I take the wheel."
+- "The first implementation gives me material to react to. The final gap still
+  needs judgment."
+- "AI gets the idea moving. I close the distance between movement and feeling."
+- "Taste is noticing that the output is coherent but no longer faithful."
+
+Show exactly where the Notch overlay starts drifting and what must be done by
+hand. Avoid presenting only the clean final result. The correction is the story.
+
+
+KEEBY: BEZEL OVERLAY
+
+Use the bezel overlay as a direct interaction-feel example.
+
+Possible details to discuss:
+
+- How it appears from the hardware edge
+- Whether its origin and direction feel spatially correct
+- How it responds immediately to input
+- How the movement settles
+- How its timing keeps it helpful instead of distracting
+- Any haptic or visual feedback that makes it feel attached to the device
+
+The feature can demonstrate that interaction feel is not a separate animation
+layer. Visual form, motion behavior, and implementation constraints all need to
+agree.
+
+
+KEEBY: CREATIVE 2D TONE PAD
+
+The 2D tone pad amazed people because it turned an abstract control into
+something direct, expressive, and playable.
+
+Possible angle:
+
+It behaves more like an instrument or game surface than a conventional settings
+panel. People can explore it without reading instructions and immediately hear
+or feel cause and effect.
+
+This may be the clearest bridge between game feel and Keeby:
+
+- Direct manipulation
+- Continuous input
+- Immediate response
+- Two-dimensional exploration
+- Expressive output
+- A feeling of play even inside a useful application
+
+Possible line:
+
+"The tone pad does not only let someone choose a value. It lets them play with
+the value."
+
+
+RECORDED STAGE-BY-STAGE DEMO FORMAT
+
+Record these project stages in advance. This keeps the talk reliable and makes
+the differences easy to see without waiting for a live build.
+
+Shared rhythm for every small project demo:
+
+1. LAYOUT — establish the visual structure.
+2. INTERACTION — make the feature function.
+3. FEEL — add restrained feedback and subtle motion.
+4. DRIFT — show where AI moved away from the intention.
+5. INTERVENTION — use Figma, SVG, React Grab, or manual code to fill the gap.
+6. RESULT — replay the final interaction.
+7. LESSON — state one reusable idea and leave.
+
+Record each stage from the same crop and viewport so the changes are immediately
+legible. Keep the clips short and let the cursor or touch interaction reveal the
+difference.
+
+Do not narrate every CSS value. Show the important decision and its effect.
+
+
+TOOLS EMERGE NATURALLY INSIDE THE PROJECTS
+
+- Etch A Sketch: Figma and angular gradients solve visual/material precision.
+- Golden Ticket: an SVG motion diagram solves spatial communication.
+- Keeby Notch overlay: manual design and engineering fill the gap after AI
+  drifts.
+- Presentation or Keeby edit: React Grab solves exact element context.
+
+This is stronger than a separate tool list because every tool arrives with a
+reason.
+
+
+UPDATED 20-MINUTE DEMO STRATEGY
+
+The previous plan had one deep demo. With the new examples, use three compact
+case studies that share one structure instead.
+
+0:00–5:15 — INTERACTION FEEL INTRO
+
+- Interactive title
+- Same features, different feel
+- Original iPhone scrolling reaction
+- Liquid Glass lineage
+- Design + motion + engineering
+
+5:15–7:45 — KEEBY: LOVED THROUGH FEEL
+
+- Very short product context
+- Bezel overlay as interaction-feel example
+- 2D tone pad as direct, playful manipulation
+- Notch overlay as the setup for AI drift
+
+7:45–11:15 — ETCH A SKETCH CASE STUDY
+
+- Layout
+- Interaction
+- Knob problem
+- Figma angular-gradient intervention
+- Subtle animation
+- Final result
+
+11:15–14:45 — GOLDEN TICKET CASE STUDY
+
+- Final animation
+- Flat attempt
+- Front / side / back SVG
+- Codex implementation
+- Motion tuning
+- Final replay
+
+14:45–16:15 — WHERE AI DRIFTS
+
+- Return to the Keeby Notch overlay
+- Show one specific drift
+- Show the manual gap-filling decision
+- React Grab can appear here if it genuinely helps the exact edit
+
+16:15–18:15 — BUILDING IN PUBLIC / DISTRIBUTION
+
+- Etch A Sketch and Golden Ticket public response
+- Strange, legible interactions make distributable demos
+- Organic discovers resonance
+- Inorganic amplifies it
+
+18:15–18:45 — CLOSE
+
+- Feel
+- Steer
+- Share
+
+18:45–20:00 — PROTECTED BUFFER
+
+This version is dense. Every case study must end after one lesson. If rehearsal
+runs long, cut Liquid Glass first, then shorten the Notch section. Do not cut the
+final replay of each project because the contrast is the payoff.
+
+
+TITLE DIRECTION NOW THAT BUILDING IN PUBLIC IS INCLUDED
+
+The current title can still work because building in public remains the final
+act rather than the majority of the talk.
+
+Recommended refinement:
+
+STEERING AI WITH TASTE
+
+Possible subtitle:
+
+"How I build memorable interactions, fill AI's gaps, and ship the work in
+public."
+
+Removing the word "Design" makes taste broad enough to cover interaction,
+engineering judgment, product decisions, and distribution.
+
+Alternative title if the AI handoff becomes the strongest story:
+
+THE PARTS AI DOESN'T FINISH
+
+Subtitle:
+
+"Interaction feel, visual steering, and building products in public."
+
+Alternative title if indie hacking becomes much more central:
+
+BUILDING WITH AI, TASTE, AND UNCOMMON CARE
+
+Do not use "indie hacking" in the title unless the distribution/business section
+becomes at least one-third of the final talk. Otherwise it promises a different
+talk from the interaction-heavy opening.
+
+
+2D TONE PAD AS THE CLEAREST GAME-FEEL DEMO
+
+The 2D tone pad should be shown stage by stage because it is almost a game-feel
+breakdown inside a useful application.
+
+The plain feature already works:
+
+- There is a two-dimensional surface.
+- X and Y map to tone parameters.
+- Dragging selects a value.
+- The value produces an output.
+
+That is the equivalent of the plain game having a character, keyboard input,
+physics, and platforms. The feature checklist is complete.
+
+Then add the layers that create interaction feel:
+
+1. LAYOUT
+   Establish the pad, hierarchy, boundaries, labels, and current state.
+
+2. INTERACTION
+   Make pointer or touch movement control the two dimensions continuously.
+   Cause and effect must be immediate and understandable.
+
+3. MICRO-ANIMATIONS
+   Add a follower that moves with controlled interpolation instead of teleporting.
+   Add restrained compression, ripples, glow, trails, or energy changes where
+   they communicate input and intensity.
+
+4. HAPTIC FEEDBACK
+   Add tactile confirmation only at meaningful moments: initial contact, a snap,
+   a boundary, a center point, or another intentional threshold. Do not vibrate
+   continuously for every tiny pointer update.
+
+5. SOUND EFFECTS / AUDIO RESPONSE
+   Make the sound respond continuously and with low perceived latency. The audio
+   is not decoration after the interaction; it is one of the feedback channels.
+
+6. COMBINED RESULT
+   Replay the same gesture with every layer working together.
+
+
+GAME-JUICE ANALOGY FOR THE TONE PAD
+
+Plain game:
+
+- Character moves
+- Enemies can be defeated
+- Health is tracked
+- Camera follows
+
+Added game feel:
+
+- Camera shake gives impact
+- Blood or particles show consequence
+- The health bar changes visibly
+- Camera movement uses smooth interpolation
+- Post-processing reinforces intensity and atmosphere
+- Sound and controller feedback confirm the event
+
+Tone-pad equivalent:
+
+- The control point follows the gesture smoothly instead of jumping.
+- A pulse, ripple, or subtle scale change confirms contact.
+- Color, glow, or a trail visualizes energy and direction.
+- Persistent indicators communicate the current tone state.
+- Haptics mark meaningful changes in the surface.
+- Sound responds immediately and continuously to movement.
+
+Do not literally copy camera shake or dramatic game effects into the UI. Translate
+their purpose. A screen shake communicates impact in a game; a restrained pulse,
+compression, or haptic tick may communicate impact in this interface.
+
+Core principle:
+
+"One gesture can be acknowledged visually, physically, and sonically. Interaction
+feel appears when every channel agrees about what just happened."
+
+Possible lines:
+
+- "The feature was already complete. Every layer after this changed how it felt
+  to explore."
+- "A settings control asks you to choose a value. This surface invites you to
+  play with one."
+- "The sound is not the reward after the interaction. The sound is part of the
+  interaction."
+- "This is game feel translated into a utility."
+
+
+RECORDED TONE-PAD SEQUENCE
+
+Use the exact same gesture and framing for every stage so the comparison is
+obvious.
+
+Suggested edit:
+
+- 4 seconds: layout only
+- 5 seconds: functional pointer interaction
+- 5 seconds: add smooth following and micro-animation
+- 5 seconds: add haptic visualization or label that indicates the tactile cue
+- 7 seconds: add sound
+- 7 seconds: final combined result
+
+During the live talk, narrate only what changed and why. The entire montage can
+stay under 45 seconds, with another 45–60 seconds for explanation.
+
+This tone-pad sequence can replace the generic easing and curves demonstration.
+It teaches interpolation, feedback, motion, haptics, and sound through a real
+product instead of an abstract dot moving across a slide.
+
+The final takeaway:
+
+"Interaction feel is not one animation. It is a coordinated system of responses."
+
+
+RESEARCH IS PART OF STEERING
+
+When AI cannot produce the right interaction or UI, do not let it choose the
+answer for you. Research the behavior yourself. Open GitHub demos, CodePens,
+and small HTML/CSS/JavaScript implementations. Try them and judge which one
+actually feels right.
+
+Once the source is confirmed, give that implementation to AI as a reference.
+Ask it to reverse-engineer the behavior and translate it into the target stack,
+such as SwiftUI or Three.js.
+
+Golden-ticket example: ripple effect.
+
+- Find working ripple implementations.
+- Feel the demos yourself instead of trusting a generated description.
+- Inspect the source of the best implementation.
+- Give the source to AI as the behavioral reference.
+- Let AI translate; keep the final judgment.
+
+Possible line:
+
+"AI can translate an implementation very well. It still cannot decide what
+feels right for me."
+
+
+SLIDE 5 MEDIA
+
+Add the side-by-side game comparison snapshot: the plain character-movement
+game beside the polished version. This is the visual proof for "Same features.
+Different feel."
+
+
+
