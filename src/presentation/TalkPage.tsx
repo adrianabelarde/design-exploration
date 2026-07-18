@@ -19,17 +19,27 @@ import {
 import { TicketScene } from '../ticket/TicketScene';
 import goldenTicketMotionDiagram from '../assets/golden-ticket-motion-diagram.png';
 import goldenTicketImage from '../assets/polar-ticket.png';
+import etchASketchPost from '../assets/x-etch-a-sketch-post.png';
+import keebyHeroImage from '../assets/keeby-web-hero.png';
+import keebyNotchFigmaImage from '../assets/keeby-notch-figma-svg.png';
+import keebyTopPaidImage from '../assets/keeby-top-paid.png';
+import steeringAiQr from '../assets/steering-ai-qr.svg';
 import iphoneScrollClip from '../../youtube-vN4U5FqrOdQ-16m40s-17m00s.mp4';
 import secondKeynoteClip from '../../youtube-jGztGfRujSE-1m52s-2m09s.mp4';
 import plainGameClip from '../../youtube-JowzyZgIKrM-18s-27s.mp4';
 import betterAnimationsClip from '../../better-animations-26s.mp4';
 import tonePadDemoClip from '../../tone-pad-demo.mov';
 import goldenTicketDemoClip from '../../golden-ticket-demo.mov';
+import etchASketchDemoClip from '../../etch-a-sketch-demo.mov';
+import reactGrabDemoClip from '../../react-grab-demo.mov';
+import keebyDemoClip from '../../keeby-demo.mp4';
 import './talk.css';
 
 const MIN_COPY_WIDTH = 260;
 const MAX_COPY_WIDTH = 860;
-const SLIDE_COUNT = 29;
+const SLIDE_COUNT = 31;
+const LIVE_DECK_URL = 'https://steering-ai-with-design-taste.vercel.app';
+const REPOSITORY_URL = 'https://github.com/adrianabelarde/design-exploration';
 
 let cachedTicketArt: TicketArt | null = null;
 let ticketArtRequest: Promise<TicketArt> | null = null;
@@ -96,33 +106,6 @@ function slideFromHash() {
   return Math.min(SLIDE_COUNT - 1, Math.max(0, Number(match[1]) - 1));
 }
 
-function Slide({
-  eyebrow,
-  title,
-  description,
-  children,
-  className = '',
-}: {
-  eyebrow?: string;
-  title?: ReactNode;
-  description?: ReactNode;
-  children?: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section className={`talk-slide ${className}`.trim()}>
-      {(eyebrow || title || description) && (
-        <header className="talk-slide-header">
-          {eyebrow && <p className="talk-eyebrow">{eyebrow}</p>}
-          {title && <h2>{title}</h2>}
-          {description && <p className="talk-slide-description">{description}</p>}
-        </header>
-      )}
-      {children}
-    </section>
-  );
-}
-
 function DemoDivider() {
   return (
     <section className="talk-slide talk-demo-divider">
@@ -136,21 +119,6 @@ function DemoTitle({ title, label }: { title: string; label: string }) {
     <section className="talk-slide talk-demo-title">
       <p className="talk-eyebrow">{label}</p>
       <h2>{title}</h2>
-    </section>
-  );
-}
-
-function DemoVideoSlide({
-  title,
-  indicator = 'Add actual demo video',
-}: {
-  title: string;
-  indicator?: string;
-}) {
-  return (
-    <section className="talk-slide talk-demo-video">
-      <h2>{title}</h2>
-      <p><span aria-hidden="true">▶</span> {indicator}</p>
     </section>
   );
 }
@@ -201,26 +169,112 @@ function FeelCapsule({
   return <span className="talk-feel-capsule">{children}</span>;
 }
 
-function StageSlide({
-  project,
-  stage,
-  title,
-  prompt,
-}: {
-  project: string;
-  stage: string;
-  title: string;
-  prompt: string;
-}) {
+function EtchPostSlide() {
   return (
-    <section className="talk-slide talk-stage-slide">
-      <header className="talk-slide-header">
-        <p className="talk-eyebrow">{project} · {stage}</p>
-        <h2>{title}</h2>
+    <section className="talk-slide talk-etch-post-slide">
+      <img
+        src={etchASketchPost}
+        alt="Public Etch A Sketch e-signature post with 895.3K views"
+      />
+    </section>
+  );
+}
+
+function KeebySvgWorkflowSlide() {
+  return (
+    <section className="talk-slide talk-keeby-svg-slide">
+      <header>
+        <h2>SVG is an explicit visual prompt.</h2>
+        <p>I designed the Keeby Notch overlay in Figma, copied the frame as SVG, and gave it to AI. The geometry stopped being open to interpretation.</p>
       </header>
-      <div className="talk-stage-content">
-        <p className="talk-stage-prompt">{prompt}</p>
+      <div className="talk-keeby-svg-flow">
+        <figure className="talk-keeby-vector-card">
+          <figcaption>Figma geometry</figcaption>
+          <img
+            src={keebyNotchFigmaImage}
+            alt="Figma context menu copying the Keeby Notch frame as SVG"
+          />
+          <code>Copy as SVG</code>
+        </figure>
+        <div className="talk-keeby-svg-transfer" aria-hidden="true">
+          <strong>SVG</strong>
+          <span>→</span>
+        </div>
+        <figure className="talk-keeby-result-card">
+          <figcaption>Implemented in Keeby</figcaption>
+          <img src={keebyHeroImage} alt="Keeby website showing the app and its Notch overlay" />
+        </figure>
       </div>
+    </section>
+  );
+}
+
+function ReactGrabSlide() {
+  return (
+    <section className="talk-slide talk-react-grab-slide">
+      <header>
+        <h2>Grab the exact element, then give it to AI.</h2>
+        <p>React Grab by Aidan Bai copies the component and its context directly from the browser. Precise edits stop requiring long descriptions.</p>
+      </header>
+      <video autoPlay controls loop playsInline muted preload="metadata">
+        <source src={reactGrabDemoClip} />
+      </video>
+    </section>
+  );
+}
+
+function OpenWorkflowSlide() {
+  const skills = [
+    'emil-design-eng',
+    'apple-design',
+    'review-animations',
+    'improve-animations',
+    'find-animation-opportunities',
+    'animation-vocabulary',
+  ];
+
+  return (
+    <section className="talk-slide talk-open-workflow-slide">
+      <div className="talk-open-workflow-copy">
+        <h2>The system behind this talk is public.</h2>
+        <p>These design and motion skills shaped the details. The repository is public, and the presentation is deployed on Vercel.</p>
+        <ul>
+          {skills.map((skill) => <li key={skill}>{skill}</li>)}
+        </ul>
+        <a href={REPOSITORY_URL} target="_blank" rel="noreferrer">github.com/adrianabelarde/design-exploration</a>
+      </div>
+      <figure className="talk-open-workflow-qr">
+        <img src={steeringAiQr} alt="QR code for the live Steering AI With Design Taste presentation" />
+        <figcaption>
+          <strong>Open the live deck</strong>
+          <a href={LIVE_DECK_URL} target="_blank" rel="noreferrer">steering-ai-with-design-taste.vercel.app</a>
+        </figcaption>
+      </figure>
+    </section>
+  );
+}
+
+function KeebyOutcomeSlide() {
+  return (
+    <section className="talk-slide talk-keeby-outcome-slide">
+      <div className="talk-keeby-outcome-copy">
+        <h2>Building in public became organic distribution.</h2>
+        <p>That momentum helped Keeby reach:</p>
+        <dl>
+          <div>
+            <dt>$6K+ USD</dt>
+            <dd>in a single month</dd>
+          </div>
+          <div>
+            <dt>1K+</dt>
+            <dd>users</dd>
+          </div>
+        </dl>
+      </div>
+      <figure className="talk-keeby-outcome-proof">
+        <img src={keebyTopPaidImage} alt="Keeby ranked number one in Top Paid Apps" />
+        <figcaption>#1 Top Paid App</figcaption>
+      </figure>
     </section>
   );
 }
@@ -799,18 +853,21 @@ const slides = [
 
   <DemoDivider key="demo-etch" />,
   <DemoTitle key="etch-title" label="Public experiment" title="E-signature but Etch A Sketch" />,
-  <DemoVideoSlide key="etch-video" title="E-signature but Etch A Sketch" />,
-  <StageSlide key="etch-1" project="Etch A Sketch" stage="Stage 01" title="One-shot the body" prompt="Build an e-signature field that behaves like an Etch A Sketch. Start with the body and make both knobs control the drawing." />,
-  <StageSlide key="etch-2" project="Etch A Sketch" stage="Stage 02" title="The knobs kept drifting" prompt="Use these exported Figma knobs exactly. Preserve the angular gradient, material depth, and current interaction mapping." />,
-  <StageSlide key="etch-3" project="Etch A Sketch" stage="Stage 03" title="Finish the physical response" prompt="Add restrained knob rotation and immediate drawing feedback. Keep the motion subtle." />,
-
-  <StageSlide key="drift" project="Keeby · Notch overlay" stage="Where AI drifts" title="This is where I take the wheel" prompt="Keep the overlay attached to the Notch. Match the intended geometry and behavior exactly; do not reinterpret the layout." />,
-  <Slide key="distribution" eyebrow="Building in public" title="The demo is part of the distribution strategy." className="talk-slide-distribution">
-    <div className="talk-distribution-line"><span>Organic discovers resonance.</span><span>Inorganic amplifies it.</span></div>
-  </Slide>,
-  <Slide key="closing" eyebrow="Feel · Steer · Share" title={<>The feature makes it useful.<br />The feeling makes it memorable.</>} className="talk-slide-closing">
-    <p className="talk-statement">Distribution gives it a chance to matter.</p>
-  </Slide>,
+  <VideoSlide key="etch-video" src={etchASketchDemoClip} fitViewport />,
+  <EtchPostSlide key="etch-post" />,
+  <KeebySvgWorkflowSlide key="keeby-svg-workflow" />,
+  <ReactGrabSlide key="react-grab" />,
+  <OpenWorkflowSlide key="open-workflow" />,
+  <KeebyOutcomeSlide key="keeby-outcome" />,
+  <section key="distribution" className="talk-slide talk-distribution-message">
+    <h2>Share the process.<br />The process is the marketing.</h2>
+    <p>People do not share ads. They share process.</p>
+  </section>,
+  <VideoSlide key="keeby-demo" src={keebyDemoClip} fitViewport />,
+  <section key="closing" className="talk-slide talk-distribution-close">
+    <h2>Shipping is only<br />half the job.</h2>
+    <p>Distribution makes sure the work you are proud of gets a chance.</p>
+  </section>,
 ];
 
 export default function TalkPage() {

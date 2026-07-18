@@ -9,6 +9,8 @@ The current explorations are:
 - View-Master — a tactile reel viewer
 - Codex Event presentation — a working presentation at `#/talk`
 
+Live presentation: [Steering AI With Design Taste](https://steering-ai-with-design-taste.vercel.app/#/talk/1)
+
 ## Run locally
 
 ```bash
