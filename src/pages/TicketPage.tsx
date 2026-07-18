@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowUpRight01Icon, Location01Icon } from '@hugeicons-pro/core-solid-rounded';
 import avatarUrl from '../assets/avatar.jpg';
 import { buildTicketArt, type TicketArt } from '../ticket/art';
 import { ticketAudio } from '../ticket/audio';
@@ -12,6 +10,27 @@ import '../ticket/ticket.css';
 
 /** What the conductor punches into your ticket when you register. */
 const RSVP_WORD = 'GOING';
+
+function LocationIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M20 10c0 5-5.35 9.12-7.18 10.37a1.45 1.45 0 0 1-1.64 0C9.35 19.12 4 15 4 10a8 8 0 1 1 16 0Z"
+        stroke="#6e6e73"
+        strokeWidth="1.8"
+      />
+      <circle cx="12" cy="10" r="2.5" stroke="#6e6e73" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function ArrowUpRightIcon() {
+  return (
+    <svg className="rsvp-ext" width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M4 12 12 4M6 4h6v6" stroke="#a1a1a6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 /** Own component so usePunchable binds when the button actually mounts. */
 function DoneButton({ onClick }: { onClick: () => void }) {
@@ -138,17 +157,12 @@ export default function TicketPage() {
           rel="noreferrer"
         >
           <div className="rsvp-chip">
-            <HugeiconsIcon icon={Location01Icon} size={18} color="#6e6e73" />
+            <LocationIcon />
           </div>
           <div className="rsvp-rowtext">
             <strong>
               Platform 7
-              <HugeiconsIcon
-                icon={ArrowUpRight01Icon}
-                size={13}
-                color="#a1a1a6"
-                className="rsvp-ext"
-              />
+              <ArrowUpRightIcon />
             </strong>
             <span>Right outside your window</span>
           </div>
