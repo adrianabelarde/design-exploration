@@ -4,10 +4,13 @@ import ContractPage from './pages/ContractPage';
 const TicketPage = lazy(() => import('./pages/TicketPage'));
 const ReelPage = lazy(() => import('./pages/ReelPage'));
 const TalkPage = lazy(() => import('./presentation/TalkPage'));
+const PresenterNotesPage = lazy(() => import('./presentation/PresenterNotesPage'));
 
-type Route = 'contract' | 'ticket' | 'reel' | 'talk';
+type Route = 'contract' | 'ticket' | 'reel' | 'talk' | 'talk-script' | 'talk-cheat-sheet';
 
 function routeFromHash(): Route {
+  if (window.location.hash.startsWith('#/talk-cheat-sheet')) return 'talk-cheat-sheet';
+  if (window.location.hash.startsWith('#/talk-script')) return 'talk-script';
   if (window.location.hash.startsWith('#/talk')) return 'talk';
   if (window.location.hash.startsWith('#/ticket')) return 'ticket';
   if (window.location.hash.startsWith('#/reel')) return 'reel';
@@ -27,6 +30,14 @@ export default function App() {
     return (
       <Suspense fallback={<main className="stage" />}>
         <TalkPage />
+      </Suspense>
+    );
+  }
+
+  if (route === 'talk-script' || route === 'talk-cheat-sheet') {
+    return (
+      <Suspense fallback={<main className="stage" />}>
+        <PresenterNotesPage mode={route === 'talk-script' ? 'script' : 'cheat'} />
       </Suspense>
     );
   }

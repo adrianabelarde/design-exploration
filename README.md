@@ -11,6 +11,11 @@ The current explorations are:
 
 Live presentation: [Steering AI With Design Taste](https://steering-ai-with-design-taste.vercel.app/#/talk/1)
 
+Presenter resources:
+
+- [Full script](https://steering-ai-with-design-taste.vercel.app/#/talk-script)
+- [Cheat sheet](https://steering-ai-with-design-taste.vercel.app/#/talk-cheat-sheet)
+
 ## Run locally
 
 ```bash
