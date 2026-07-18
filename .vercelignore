@@ -1,0 +1,10 @@
+.git
+.agents
+.vercel
+dist
+node_modules
+better-animations.mov
+src/assets/game-feel-comparison.png
+src/assets/interaction-feel-sum.png
+src/assets/iphone-scroll-keynote.png
+src/assets/x-polar-express-post.png
